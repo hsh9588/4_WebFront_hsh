@@ -7,9 +7,9 @@
 }
 
 /* 분할된 영역에 테두리를 추가 */
-/* div, span, main, header, footer, nav, aside, section, article{
+div, span, main, header, footer, nav, aside, section, article{
     border: 1px solid black;
-} */
+}
 
 /* main */
 main{
