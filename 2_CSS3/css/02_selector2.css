@@ -37,7 +37,7 @@ p[name='name-1']{background-color: green;}
 #test-div .test-3{background-color: gray;}
 
 /* 후손 선택자 + 모든 요소 선택자 */
-#test-div *{font-family: '바탕체';}
+#test-div *{font-family: '궁서체';}
 
 /* 반응 선택자 */
 .div-cls{
