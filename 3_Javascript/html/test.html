@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        textarea {
+            min-height: 5rem;
+            overflow-y: hidden;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-section col pb-10">
+        <input type="text" name="user_name" placeholder="Input your name" autofocus>
+        <textarea id="newTweetContent" placeholder="What's happening?" onkeydown="resize(this)" ></textarea>
+        <button class="btn-register">Tweet</button>
+    </div>
+    <script src="../js/test.js"></script>
+</body>
+</html>
