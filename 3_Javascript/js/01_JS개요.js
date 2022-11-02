@@ -11,3 +11,4 @@ function changeColor1(){
 function changeColor2(){
     document.getElementById("box").style.backgroundColor = "yellow";
 }
+
