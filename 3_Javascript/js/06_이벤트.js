@@ -9,6 +9,7 @@ function fnTest1(btn){
     btn.style.color = "white";
     btn.style.backgroundColor = "black";
     btn.style.cursor = "pointer";
+    btn.style.fontWeight = "bold";
 }
 
 // 고전 이벤트 모델
