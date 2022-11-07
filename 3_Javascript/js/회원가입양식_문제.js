@@ -1,3 +1,5 @@
+console.log("Hello Script!");
+
 // 선생님 답
 const inputId = document.getElementById("inputId");
 
@@ -27,6 +29,7 @@ const pwMessage = document.getElementById("pwMessage");
 // * 비밀번호, 비밀번호 확인 : 키보드가 올라올 때
 inputPwConfirm.addEventListener("keyup", function(){
     if(inputPw.value.trim().length == 0){
+        alert('비밀번호를 입력해주세요');
         inputPwConfirm.value = "";
         inputPw.focus();
     }
@@ -61,13 +64,19 @@ const nameMessage = document.getElementById("nameMessage");
 inputName.addEventListener("change", function(){
 
     const regEx = /^[가-힣]{3,6}$/;
-    if()
+    if(regEx.test(this.value)){
+        nameMessage.innerText = "정상입력";
+        nameMessage.style.color = "green";
+    } else{
+        nameMessage.innerText = "한글만 입력하세요";
+        nameMessage.style.color = "red";
+    }
 });
 
 
 // html from 태그에 onsubmit= return validate(); 추가 작성 후 
 
-function vaildate(){
+function validate(){
     // const gender = document.getElementsByName("gender");
 
     // if(!gender[0].checked && !gender[1].checked){

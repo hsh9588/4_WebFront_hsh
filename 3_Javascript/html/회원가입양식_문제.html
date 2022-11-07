@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    <form action="/main.html" method="post">
+    <form action="/main.html" method="post" onsubmit="return validate()">
         <fieldset>
             <legend>회원 가입 양식</legend>
 
@@ -170,16 +170,25 @@
 
         const createBtn = document.querySelector(".btn-area > button:last-child");
         const gender = document.querySelectorAll("label > input");
+        const inputTel = document.getElementById("inputTel");
 
-        createBtn.addEventListener("click", function(event){
+        function validate(){
             if(!gender[0].checked && !gender[1].checked){
                 alert("성별을 선택해주세요.");
-                event.preventDefault();
-                return;
+                return false;
             }
-        });
+
+            const regEx = /^[0][0-9]{1,2}-[0-9]{3,4}-[0-9]{4}/;
+
+            if (!regEx.test(inputTel.value)){
+
+                alert("전화번호의 형식이 올바르지 않습니다.");
+                return false;
+            }
+            return true;
+        }
 
     </script>
+    <!-- <script src="../js/회원가입양식_문제.js"></script> -->
 </body>
-
 </html>
