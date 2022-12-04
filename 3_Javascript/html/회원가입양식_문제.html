@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 가입 양식</title>
+    <style>
+        .btn-area {
+            text-align: right;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        fieldset {
+            width: 430px;
+        }
+
+        span {
+            font-size: 14px;
+        }
+
+        .confirm {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/main.html" method="post" onsubmit="return validate()">
+        <fieldset>
+            <legend>회원 가입 양식</legend>
+
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td>
+                        <input type="text" id="inputId">
+                    </td>
+                    <td>
+                        <button type="button">중복확인</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td>
+                        <input type="password" id="inputPw">
+                    </td>
+                    <td>
+                        <span id="pwMessage"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호확인</td>
+                    <td>
+                        <input type="password" id="inputPwConfirm">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td>
+                        <input type="text" id="inputName">
+                    </td>
+                    <td>
+                        <span id="nameMessage"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>성별</td>
+                    <td>
+                        <label> 남 <input type="radio" name="gender" value="m"></label>
+                        <label> 여 <input type="radio" name="gender" value="f"></label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>전화번호</td>
+                    <td>
+                        <input type="text" id="inputTel">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td>
+                        <input type="text" id="inputEmail">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="btn-area">
+                        <button type="reset">초기화</button>
+                        <button>회원가입</button>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+
+    <script>
+        document.getElementById("inputId").addEventListener("change", function(){
+            const regEx = /^[a-z][a-zA-Z\d\-\_]{5,13}$/;
+
+            if (regEx.test(this.value)){
+                this.style.backgroundColor = "springgreen";
+                this.style.color = "black";
+            } else {
+                this.style.backgroundColor = "red";
+                this.style.color = "white";
+            }
+        });
+
+        const inputPw = document.getElementById("inputPw");
+        const inputPwConfirm = document.getElementById("inputPwConfirm");
+        const pwMessage = document.getElementById("pwMessage");
+
+        inputPwConfirm.addEventListener("keyup", function(){
+
+            if(inputPw.value.trim().length == 0){
+                alert("비밀번호를 입력해주세요.");
+                inputPwConfirm.value = "";
+                inputPw.focus();
+            }
+
+            if(inputPw.value == inputPwConfirm.value){
+                pwMessage.innerText = "비밀번호 일치";
+                pwMessage.style.color = "green";
+            } else{
+                pwMessage.innerText = "비밀번호 불일치";
+                pwMessage.style.color = "red";
+                
+            }
+        });
+
+        inputPw.addEventListener("keyup", function(){
+            if(inputPw.value == inputPwConfirm.value){
+                pwMessage.innerText = "비밀번호 일치";
+                pwMessage.style.color = "green";
+            } else{
+                pwMessage.innerText = "비밀번호 불일치";
+                pwMessage.style.color = "red";
+                
+            }
+        });
+
+        document.getElementById("inputName").addEventListener("change", function(){
+            const regEx = /^[가-힣]{2,5}$/;
+
+            const nameMessage = document.getElementById("nameMessage");
+
+            if (regEx.test(this.value)){
+                nameMessage.innerText = "정상입력";
+                nameMessage.style.color = "green";
+            } else{
+                nameMessage.innerText = "한글만 입력하세요";
+                nameMessage.style.color = "red";
+            }
+            
+        });
+
+        const createBtn = document.querySelector(".btn-area > button:last-child");
+        const gender = document.querySelectorAll("label > input");
+        const inputTel = document.getElementById("inputTel");
+
+        function validate(){
+            if(!gender[0].checked && !gender[1].checked){
+                alert("성별을 선택해주세요.");
+                return false;
+            }
+
+            const regEx = /^[0][0-9]{1,2}-[0-9]{3,4}-[0-9]{4}/;
+
+            if (!regEx.test(inputTel.value)){
+
+                alert("전화번호의 형식이 올바르지 않습니다.");
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+    <!-- <script src="../js/회원가입양식_문제.js"></script> -->
+</body>
+</html>
